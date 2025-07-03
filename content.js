@@ -19,7 +19,7 @@ const content = {
       "Shop Now"
     ],
     "image_urls": [
-      "logo.png"
+      "logo.jpg"
     ]
   },
   "products_section": {

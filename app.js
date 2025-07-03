@@ -5,13 +5,14 @@ document.getElementById('page-title').innerText = "Somarthok: Sustainable Cutler
 // Header
 document.getElementById('header-logo').src = content.header.image_urls[0];
 document.getElementById('header-brand').innerText = content.header.texts[0];
+
 // Nav links
 const navIcons = ['fa-utensils', 'fa-seedling', 'fa-chart-line', 'fa-envelope'];
 const navAnchors = ['#products', '#about', '#stats', '#contact'];
 let navHtml = '', mobileNavHtml = '';
 for(let i=1; i<content.header.texts.length; i++) {
-  navHtml += `<li><a href="${navAnchors[i-1]}" class="hover:text-eco3 transition-colors"><i class="fa-solid ${navIcons[i-1]}"></i> ${content.header.texts[i]}</a></li>`;
-  mobileNavHtml += `<li><a href="${navAnchors[i-1]}" class="hover:text-eco3 transition-colors"><i class="fa-solid ${navIcons[i-1]}"></i> ${content.header.texts[i]}</a></li>`;
+  navHtml += `<li><a href="${navAnchors[i-1]}" class="hover:text-eco3 transition-colors px-6 py-2 rounded-full shadow text-base flex items-center gap-2 menu-pill"><i class="fa-solid ${navIcons[i-1]}"></i> ${content.header.texts[i]}</a></li>`;
+  mobileNavHtml += `<li style="--i:${i};"><a href="${navAnchors[i-1]}" class="hover:text-eco3 transition-colors px-6 py-2 rounded-full shadow text-base flex items-center gap-2 menu-pill"><i class="fa-solid ${navIcons[i-1]}"></i> ${content.header.texts[i]}</a></li>`;
 }
 document.getElementById('nav-links').innerHTML = navHtml;
 document.getElementById('mobile-nav-links').innerHTML = mobileNavHtml;
@@ -34,7 +35,7 @@ for(let i=0; i<3; i++) {
     <h3 class="font-heading text-xl text-white mb-2">${content.products_section.texts[idx]}</h3>
     <p class="text-white/90 text-center mb-4">${content.products_section.texts[idx+1]}</p>
     <span class="bg-white/90 text-eco${(i%5)+1} font-bold px-4 py-1 rounded-full mb-3">${content.products_section.texts[idx+2]}</span>
-    <button class="px-6 py-2 rounded-full bg-eco3 text-white font-semibold shadow hover:bg-eco4 transition-colors duration-200"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+    <button class="px-6 py-2 rounded-full gradient-btn text-white font-semibold shadow hover:scale-105 transition-all duration-200"><i class="fa-solid fa-cart-plus shine-button"></i> Add to Cart</button>
   </div>`;
 }
 document.getElementById('products-list').innerHTML = products;
@@ -78,11 +79,41 @@ document.getElementById('footer-logo').src = content.footer.image_urls[0];
 document.getElementById('footer-brand').innerText = content.footer.texts[0];
 
 // Mobile Menu
+const body = document.body;
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const closeMenu = document.getElementById('close-menu');
-menuBtn.onclick = () => mobileMenu.style.display = 'flex';
-closeMenu.onclick = () => mobileMenu.style.display = 'none';
+
+// Open/close functions with scroll fix and animation
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  mobileMenu.style.display = 'flex';
+  body.style.overflowX = 'hidden';
+  // Animate mobile menu items
+  const items = mobileMenu.querySelectorAll('ul > li');
+  items.forEach((li, i) => {
+    li.style.setProperty('--i', i+1);
+  });
+}
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  setTimeout(() => {
+    mobileMenu.style.display = 'none';
+  }, 400); // matches CSS transition
+  body.style.overflowX = '';
+}
+menuBtn.onclick = openMobileMenu;
+closeMenu.onclick = closeMobileMenu;
+
+// Add event listeners to mobile menu links to close the menu on click
+function addMobileMenuLinkListeners() {
+  const mobileNavLinks = document.getElementById('mobile-nav-links');
+  const links = mobileNavLinks.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+}
+addMobileMenuLinkListeners();
 
 // D3.js Bar Chart (Marketing Stats)
 const data = [
@@ -162,3 +193,24 @@ svg.selectAll("text.value")
   .attr("font-weight", "bold")
   .text(d => d.value + "K");
 
+// --- Custom Cursor Invert Overlay ---
+document.body.addEventListener('mousemove', (event) => {
+    document.body.style.setProperty('--mouse-x', `${event.clientX}px`);
+    document.body.style.setProperty('--mouse-y', `${event.clientY}px`);
+});
+
+
+// smooth scrollToSection
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      e.preventDefault();
+      targetElement.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+});

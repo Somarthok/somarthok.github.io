@@ -8,7 +8,7 @@ const content = {
       "Contact"
     ],
     "image_urls": [
-      "https://scontent.fdac2-1.fna.fbcdn.net/v/t39.30808-1/471172574_122150603240340242_2176485461958225354_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=110&ccb=1-7&_nc_sid=2d3e12&_nc_eui2=AeGZw1MEodJ9JpnaT1BHZFbw_T5YBIyqPs39PlgEjKo-zQoSIxPPBQeqUhK-EFoWnHZT8Bc3Pw1qF4FSLgIyYZsB&_nc_ohc=52JdJ7A4leMQ7kNvwEMC3rL&_nc_oc=AdlnT9RxaevhF5wphx6EkfUc-jGNSiLM_284AioNap69N0chXgo_eeEEsPR86fOfPSQ&_nc_zt=24&_nc_ht=scontent.fdac2-1.fna&_nc_gid=Xyw6VBr7byDhG6Z88EHrLg&oh=00_AfPnie4KALJOfc9rk5GUWLjDwdPTPRnJkuKCiU5bTWe1sQ&oe=686AE551"
+      "favicon.png"
     ]
   },
   "hero_section": {
@@ -19,7 +19,7 @@ const content = {
       "Shop Now"
     ],
     "image_urls": [
-      "https://scontent.fdac2-1.fna.fbcdn.net/v/t39.30808-6/471172574_122150603240340242_2176485461958225354_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGZw1MEodJ9JpnaT1BHZFbw_T5YBIyqPs39PlgEjKo-zQoSIxPPBQeqUhK-EFoWnHZT8Bc3Pw1qF4FSLgIyYZsB&_nc_ohc=52JdJ7A4leMQ7kNvwEMC3rL&_nc_oc=AdlnT9RxaevhF5wphx6EkfUc-jGNSiLM_284AioNap69N0chXgo_eeEEsPR86fOfPSQ&_nc_zt=23&_nc_ht=scontent.fdac2-1.fna&_nc_gid=MJZY_yhcS-oiMnlK6R1zQw&oh=00_AfPBwL3d6d2fQiE874PAz1JB3exg9gicUsgpunVX4rbvUA&oe=686AEFF6"
+      "logo.png"
     ]
   },
   "products_section": {
@@ -78,7 +78,7 @@ const content = {
       "Somarthok © 2025"
     ],
     "image_urls": [
-      "https://pplx-res.cloudinary.com/image/private/user_uploads/78108584/97aa65e5-e93f-4292-8033-a8cb31e812e9/471172574_122150603240340242_2176485461958225354_n-removebg-preview.jpg"
+      "favicon.png"
     ]
   }
 };
